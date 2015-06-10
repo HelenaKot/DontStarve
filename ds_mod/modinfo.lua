@@ -17,6 +17,6 @@ reign_of_giants_compatible = true
 --icon_atlas = "modicon.xml"
 --icon = "modicon.tex"
 --ToDo To
-
+--to
 
 
