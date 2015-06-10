@@ -15,4 +15,12 @@ reign_of_giants_compatible = true
 
 -- TODO
 --icon_atlas = "modicon.xml"
+<<<<<<< HEAD
 --icon = "modicon.tex"
+=======
+--icon = "modicon.tex"
+--ToDo To
+
+
+
+>>>>>>> origin/master
