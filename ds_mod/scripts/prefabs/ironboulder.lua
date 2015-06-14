@@ -53,7 +53,7 @@ local function fn(Sim)
 		function(inst, worker, workleft)
 			local pt = Point(inst.Transform:GetWorldPosition())
 			if workleft <= 0 then
-				inst.SoundEmitter:PlaySound("../../data/sound/wilson/rock_break")
+				inst.SoundEmitter:PlaySound("dontstarve/wilson/rock_break")
 				inst.components.lootdropper:DropLoot(pt)
 				inst:Remove()
 			else
