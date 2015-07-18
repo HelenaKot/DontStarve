@@ -3,6 +3,7 @@ PrefabFiles = {
 "ironingot",
 "ironboulder",
 "crucible",
+"scrapheap",
 }
 
 local STRINGS = GLOBAL.STRINGS
@@ -20,9 +21,22 @@ Assets = {
 	
 	Asset("IMAGE", "minimap/ironboulder.tex"),	
 	Asset("ATLAS", "minimap/ironboulder.xml"),
+	
+	Asset("IMAGE", "minimap/crucible.tex"),	
+	Asset("ATLAS", "minimap/crucible.xml"),
+	
+	Asset("IMAGE", "minimap/scrapheap.tex"),	
+	Asset("ATLAS", "minimap/scrapheap.xml"),
+	
+	Asset( "IMAGE", "levels/textures/noise_scrap.tex" ),
+	Asset( "IMAGE", "levels/textures/mini_noise_scrap.tex" ),
+	Asset( "IMAGE", "levels/tiles/scrap.tex" ),
+	Asset( "FILE", "levels/tiles/scrap.xml" ),
 }
 
 AddMinimapAtlas("minimap/ironboulder.xml")
+AddMinimapAtlas("minimap/crucible.xml")
+AddMinimapAtlas("minimap/scrapheap.xml")
 
 GLOBAL.STRINGS.NAMES.IRONORE = "Iron Ore"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.IRONORE = "todo"
@@ -35,6 +49,9 @@ GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.IRONBOULDER = "todo"
 
 GLOBAL.STRINGS.NAMES.CRUCIBLE = "Crucible"
 GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.CRUCIBLE = "todo"
+
+GLOBAL.STRINGS.NAMES.SCRAPHEAP = "pile of scrap"
+GLOBAL.STRINGS.CHARACTERS.GENERIC.DESCRIBE.SCRAPHEAP = "todo"
 
 local blabla = {
 	name = "meatballs",

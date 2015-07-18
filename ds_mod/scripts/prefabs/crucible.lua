@@ -1,17 +1,11 @@
-require "prefabutil" --dunno?
+--require "prefabutil" --dunno?
 local cooking = require("cooking")
 
 local assets =
 {
 	Asset("ANIM", "anim/crucible.zip"),
 }
---[[
-local prefabs = {}
 
-for k,v in pairs(cooking.recipes.cookpot) do
-	table.insert(prefabs, v.name)
-end
-]]--
 local function onbuilt(inst)
 	inst.AnimState:PlayAnimation("place")
 	inst.AnimState:PushAnimation("idle")
@@ -55,7 +49,7 @@ local widgetbuttoninfo = {
 	end,
 }
 
-local function startcookfn(inst)
+local function startsmelting(inst)
 	inst.AnimState:PlayAnimation("loop", true)
 	--inst.SoundEmitter:KillSound("snd")
 	--inst.SoundEmitter:PlaySound("../../dontstarve/common/cookingpot_rattle", "snd")
@@ -63,9 +57,10 @@ local function startcookfn(inst)
 end
 
 local function itemtest(inst, item, slot)
-	if cooking.IsCookingIngredient(item.prefab) then
+	--if cooking.IsCookingIngredient(item.prefab) then
+
 		return true
-	end
+	--end
 end
 
 local function donefn(inst)
@@ -79,7 +74,7 @@ local function continuedonefn(inst)
 	inst.AnimState:PlayAnimation("idle_done")
 end
 
-local function continuecookfn(inst)
+local function continuesmelting(inst)
 	inst.AnimState:PlayAnimation("loop", true)
 	--inst.SoundEmitter:PlaySound("../../dontstarve/common/cookingpot_rattle", "snd")
 end
@@ -119,14 +114,14 @@ local function fn(Sim)
     inst.AnimState:SetBuild("crucible")
     inst.AnimState:PlayAnimation("idle")
 	
-	MakeObstaclePhysics(inst, .8)
+	MakeObstaclePhysics(inst, 1)
    
     inst:AddComponent("inspectable")
 	inst:AddTag("structure")
 	
 	inst:AddComponent("stewer")
-    inst.components.stewer.onstartcooking = startcookfn
-    inst.components.stewer.oncontinuecooking = continuecookfn
+    inst.components.stewer.onstartcooking = startsmelting
+    inst.components.stewer.oncontinuecooking = continuesmelting
     inst.components.stewer.oncontinuedone = continuedonefn
     inst.components.stewer.ondonecooking = donefn
     inst.components.stewer.onharvest = harvestfn
@@ -141,7 +136,7 @@ local function fn(Sim)
     inst.components.container.side_align_tip = 100
     inst.components.container.widgetbuttoninfo = widgetbuttoninfo
     inst.components.container.acceptsstacks = false
-    inst.components.container.type = "cooker"
+    --inst.components.container.type = "cooker"
 	
 	--inst.components.container.onopenfn = onopen
     --inst.components.container.onclosefn = onclose
@@ -156,8 +151,10 @@ local function fn(Sim)
     inst.components.workable:SetWorkLeft(4)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
-	--inst.entity:AddMiniMapEntity()	
-	--inst.MiniMapEntity:SetIcon( "TODO.tex" )		    
+	
+	inst.entity:AddMiniMapEntity()	
+	inst.MiniMapEntity:SetIcon( "crucible.tex" )	
+	
 	MakeSnowCovered(inst, .01)    
 	inst:ListenForEvent( "onbuilt", onbuilt)
     return inst
