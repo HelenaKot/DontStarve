@@ -28,6 +28,11 @@ Assets = {
 	Asset("IMAGE", "minimap/scrapheap.tex"),	
 	Asset("ATLAS", "minimap/scrapheap.xml"),
 	
+	Asset( "IMAGE", "levels/textures/noise_red_desert.tex" ),
+	Asset( "IMAGE", "levels/textures/mini_noise_red_desert.tex" ),
+	Asset( "IMAGE", "levels/tiles/red_desert.tex" ),
+	Asset( "FILE", "levels/tiles/red_desert.xml" ),
+	
 	Asset( "IMAGE", "levels/textures/noise_scrap.tex" ),
 	Asset( "IMAGE", "levels/textures/mini_noise_scrap.tex" ),
 	Asset( "IMAGE", "levels/tiles/scrap.tex" ),

@@ -1,0 +1,4 @@
+MOD_TUNING = { 
+	RED_DESERT_ID = 37,
+	SCRAP_ID = 38,
+}

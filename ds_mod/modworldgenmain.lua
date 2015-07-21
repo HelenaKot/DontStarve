@@ -1,9 +1,8 @@
+modimport("scripts/ModTuning.lua")
 modimport("scripts/tile_adder.lua")
 
 GLOBAL.require("constants")
 GLOBAL.require("map/terrain")
-GLOBAL.require("map/level")
-GLOBAL.require("map/tasks")
 
 GLOBAL.terrain.rooms.Rocky.contents.distributeprefabs.ironboulder = 2
 GLOBAL.terrain.rooms.BGNoise.contents.distributeprefabs.ironboulder = 0.1
@@ -22,39 +21,25 @@ end
 
 GLOBAL.terrain.filter.ironboulder = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}
 
--- function NewTile(globalName, id, name, runsound, walksound, snowsound)
--- NewTile("SCRAPYARD", 8, "scrap", "dontstarve/movement/run_marble", "dontstarve/movement/walk_marble", "dontstarve/movement/run_ice")
-AddTile("SCRAPYARD", 84, "scrap", {noise_texture = "levels/textures/noise_scrap.tex",    runsound="dontstarve/movement/run_marble", walksound="dontstarve/movement/walk_marble", snowsound="dontstarve/movement/run_ice", 
-		mudsound = "dontstarve/movement/run_mud"}, {noise_texture = "levels/textures/mini_noise_scrap.tex"})
+AddTile("RED_DESERT", MOD_TUNING.RED_DESERT_ID, "red_desert", {noise_texture = "levels/textures/noise_red_desert.tex",    runsound="dontstarve/movement/run_dirt", walksound="dontstarve/movement/walk_dirt", snowsound="dontstarve/movement/run_snow", mudsound = "dontstarve/movement/run_mud"}, {noise_texture = "levels/textures/mini_noise_red_desert.tex"})
+AddTile("SCRAPYARD", MOD_TUNING.SCRAP_ID, "scrap", {noise_texture = "levels/textures/noise_scrap.tex",    runsound="dontstarve/movement/run_marble", walksound="dontstarve/movement/walk_marble", snowsound="dontstarve/movement/run_ice", mudsound = "dontstarve/movement/run_mud"}, {noise_texture = "levels/textures/mini_noise_scrap.tex"})
 
---[[		
-AddRoom("ScrapYard", {
-	--colour={r=0.2,g=0.0,b=0.2,a=0.3},
-	value = GLOBAL.GROUND.SCRAPYARD,
-	--tags = {"ForceConnected",   "MazeEntrance"},--"Maze",
-	contents =  {
-		distributepercent = 0.6,
-		distributeprefabs= 
-		{
-			scrapheap1 = 1,
-			scrapheap2 = 1,
-			scrapheap3 = 1,
-			scrapheap4 = 1,
-			scrapheap5 = .5
-		 },
-	}
-})
-]]--
---GLOBAL.require("map/level")
+--table.insert(GLOBAL.layout.ground_types, GROUND.SCRAPYARD)
+		
+GLOBAL.require("ModTuning")
+GLOBAL.require("map/level")
+GLOBAL.require("map/tasks")
+
+MOD_TUNING.SCRAP_REAL_ID = GLOBAL.GetTileInfo(GLOBAL.GROUND.SCRAPYARD)
+ for k, v in pairs(MOD_TUNING.SCRAP_REAL_ID) do
+      print(k .. " --- " .. v)
+  end
 
 modimport("scripts/map/tasks/ModTasks.lua")
 modimport("scripts/map/rooms/ModRooms.lua")
 
-
---local LEVELTYPE = GLOBAL.LEVELTYPE
-
 local function AddModTask(level)
-	table.insert(level.tasks, "ScrapYard")
+	table.insert(level.tasks, "TankBiome")
 end
 
 AddLevelPreInit("SURVIVAL_DEFAULT", AddModTask)

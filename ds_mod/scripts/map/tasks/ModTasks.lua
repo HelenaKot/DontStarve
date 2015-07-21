@@ -2,18 +2,19 @@ modimport("scripts/map/rooms/ModRooms.lua")
 
 --GLOBAL.require("map/terrain")
 GLOBAL.require("map/lockandkey")
+
 --GLOBAL.require("map/tasks")
 
-AddTask("ScrapYard", {
+AddTask("TankBiome", {
 		locks = GLOBAL.LOCKS.NONE,
 		keys_given = GLOBAL.KEYS.MEAT,
 		--entrance_room = "Entrance",
 		room_choices = {
-			["ScrapYard"] = 3,
-			["PondyGrass"] = 1,
-			["BuzzardyBadlands"] = 2,
+			["BGRedDesert"] = 1,
+			["ScrapYard"] = 1,
+			["ScrapPiles"] = 10,
 		},  
 		room_bg = GLOBAL.GROUND.SCRAPYARD,
-		background_room = "BGDeepForest",
-		colour={r=.05,g=.9,b=.9,a=1},
+		background_room = "BGRedDesert",
+		colour={r=.9,g=.05,b=.05,a=1},
 	})
